@@ -1,0 +1,12 @@
+'http://'+ip+':8000',{'connect timeout':200}
+
+protocolo instalación
+
+1.inicializamos npm nuestro gestor de paquetes - no olvidar "start": "node servo.js" dentro de scripts en el paquete JSON
+npm init -y
+2. instalamos express
+npm istall express --save //o// npm i express -S el --save o -S es para acturalizar el JSON
+3. instalamos socket.io
+npm i socket.io -S
+4. instalamos nodemon como dependencia de desarrollo, esto para evitar tener que para y reinicialiazar el servidor cada vez que hacemos cambios
+npm i nodemon -D

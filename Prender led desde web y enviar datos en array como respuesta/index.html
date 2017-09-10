@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="socket.io/socket.io.js"></script>
+</head>
+<script>
+	
+	var socket = io.connect('http://localhost:8000',{'forceNew': true});
+
+//Escuhamos el socket que enviamos desde servidor
+	socket.on('messages', function(datos){
+	// console.log(datos);
+	// arreglo(datos);
+	});
+
+//utilizamos la información del socket
+function arreglo(lect) {
+	// var html = '<div>'+"hola "+datos.text+'</div>';
+	// $("#arreglo") = html;	
+	// document.getElementById('arreglo').innerHTML = html;	
+	// console.log(lect);
+}
+ 
+//Escuhamos el socket que enviamos desde servidor
+	socket.on('lectura', function(lect){
+	var arr1 = lect[0];
+	console.log(arr1);
+
+	var arr2 = lect[1];
+	
+
+	document.getElementById('arr1').innerHTML = arr1;	
+	document.getElementById('arr2').innerHTML = arr2;	
+
+
+	// arreglo(lect);
+	// contaminacion(lect);
+	});
+
+	function enviarM(){
+	var ide = $("#dato").val();
+	// var texto = $("#texto").val();
+	// alert(ide+" "+texto);
+
+	var payload = {
+		id: ide,
+		text: "hablalo"
+	}
+	// alert(payload.text);
+	var grados = ide;
+
+	socket.emit('grados', grados);
+	return false;
+}
+</script>
+
+<style type="text/css">
+	
+	.arreglos{
+		display: flex;
+	}
+	.arr{
+		margin: 20px 30px;
+		text-align: center;
+	}
+</style>
+<div>
+	<div>
+	<input type="text" name="" placeholder="introduzca dato" id="dato">
+		<input type="submit" name="" value="Enviar" onclick="enviarM();">
+	</div>
+	<div class="arreglos">
+		<div class="arr">Dato1
+			<div id="arr1">...</div>
+		</div>
+		<div class="arr">Dato2
+			<div id="arr2">...</div>
+		</div>
+		
+	</div>
+	
+</div>
+<body>
+
+</body>
+</html>
